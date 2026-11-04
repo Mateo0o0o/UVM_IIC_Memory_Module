@@ -40,8 +40,8 @@
                         drive_slave(vif, item.slave_addr, bit'(MEM_WRITE), item.mem_addr, item.mem_data, data_read);
                     end
                     else begin
-                        `uvm_info("READING SLAVE", $sformatf("Slave Addr=%0h, Mem_Addr=%0h RData=%0h",
-                                  item.slave_addr, item.mem_addr, data_read), UVM_NONE)
+                        `uvm_info("READING SLAVE", $sformatf("Slave Addr=%0h, Mem_Addr=%0h",
+                                  item.slave_addr, item.mem_addr), UVM_NONE)
                         drive_slave(vif, item.slave_addr, bit'(MEM_READ), item.mem_addr, item.mem_data, data_read);
                     end
                     seq_item_port.item_done(item);
