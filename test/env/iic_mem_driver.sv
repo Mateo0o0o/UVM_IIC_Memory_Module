@@ -36,12 +36,12 @@
                     seq_item_port.get_next_item(item);
                     if (item.mem_mode == MEM_WRITE) begin
                         `uvm_info("WRITING SLAVE", $sformatf("Slave Addr=%0h, Mem_Addr=%0h WData=%0h", 
-                                   item.slave_addr, item.mem_addr, item.mem_data), UVM_NONE)
+                                   item.slave_addr, item.mem_addr, item.mem_data), UVM_HIGH)
                         drive_slave(vif, item.slave_addr, bit'(MEM_WRITE), item.mem_addr, item.mem_data, data_read);
                     end
                     else begin
                         `uvm_info("READING SLAVE", $sformatf("Slave Addr=%0h, Mem_Addr=%0h",
-                                  item.slave_addr, item.mem_addr), UVM_NONE)
+                                  item.slave_addr, item.mem_addr), UVM_HIGH)
                         drive_slave(vif, item.slave_addr, bit'(MEM_READ), item.mem_addr, item.mem_data, data_read);
                     end
                     seq_item_port.item_done(item);
@@ -88,7 +88,7 @@
 
                         end
                         else begin
-                            `uvm_info("NO SLAVE", "Slave does not acknowledge the transaction!", UVM_NONE)
+                            `uvm_info("NO SLAVE", "Slave does not acknowledge the transaction!", UVM_LOW)
                         end
 
                         stop_condition(vif);
@@ -143,7 +143,7 @@
                 if (!slave_data_ack) begin
                     `uvm_info("WRITE: DATA NACK", 
                             $sformatf("Slave with slave_addr=%0h did not acknowledge the data: %0h", 
-                            slave_addr, data), UVM_NONE)
+                            slave_addr, data), UVM_LOW)
                 end
 
                 write_ack = slave_data_ack;
