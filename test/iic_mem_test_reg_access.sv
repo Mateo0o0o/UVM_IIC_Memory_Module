@@ -27,13 +27,13 @@
                     seq = iic_mem_sequence_overwrite::type_id::create("seq");
                     seq.start(env.agent.sequencer);
                 end
-
-                // `uvm_info("TEST STATUS", "Starting Random Read/Write Sequence", UVM_LOW)
-                // begin
-                //     iic_mem_sequence_random seq;
-                //     seq = iic_mem_sequence_random::type_id::create("seq");
-                //     seq.start(env.agent.sequencer);
-                // end
+                
+                `uvm_info("TEST STATUS", "Starting Random Read/Write Sequence", UVM_LOW)
+                begin
+                    iic_mem_sequence_random seq;
+                    seq = iic_mem_sequence_random::type_id::create("seq");
+                    seq.start(env.agent.sequencer);
+                end
 
                 `uvm_info("TEST STATUS", "This is the End of the Test", UVM_LOW)
                 phase.drop_objection(this, "TEST DONE");
