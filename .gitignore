@@ -4,3 +4,4 @@ coverage*
 vrun
 *.fst
 *.surf
+*.log
