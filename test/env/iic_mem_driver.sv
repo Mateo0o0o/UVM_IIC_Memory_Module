@@ -35,12 +35,12 @@
                     byte data_read;
                     seq_item_port.get_next_item(item);
                     if (item.mem_mode == MEM_WRITE) begin
-                        `uvm_info("WRITING SLAVE", $sformatf("Slave Addr=%0b, Mem_Addr=%0b WData=%0b", 
+                        `uvm_info("WRITING SLAVE", $sformatf("Slave Addr=%0h, Mem_Addr=%0h WData=%0h", 
                                    item.slave_addr, item.mem_addr, item.mem_data), UVM_NONE)
                         drive_slave(vif, item.slave_addr, bit'(MEM_WRITE), item.mem_addr, item.mem_data, data_read);
                     end
                     else begin
-                        `uvm_info("READING SLAVE", $sformatf("Slave Addr=%0b, Mem_Addr=%0b RData=%0b",
+                        `uvm_info("READING SLAVE", $sformatf("Slave Addr=%0h, Mem_Addr=%0h RData=%0h",
                                   item.slave_addr, item.mem_addr, data_read), UVM_NONE)
                         drive_slave(vif, item.slave_addr, bit'(MEM_READ), item.mem_addr, item.mem_data, data_read);
                     end

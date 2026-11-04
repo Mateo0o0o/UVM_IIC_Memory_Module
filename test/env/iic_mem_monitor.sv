@@ -64,7 +64,7 @@
                         item = read_success ? read_item_temp : ( write_success ? write_item_temp : item);
                         // `uvm_info("SUCCESS STATUS", $sformatf("read_suc= %0b, write_suc=%0b", read_success, write_success), UVM_NONE)
                         item.status = (read_success ^ write_success) ? UVM_IS_OK : UVM_NOT_OK;
-                        `uvm_info("SAMPLE", $sformatf("Sampled slave_addr=%0b, status=%s, mode=%s, mem_addr=%0b, mem_data=%0b", 
+                        `uvm_info("SAMPLE", $sformatf("Sampled slave_addr=%0h, status=%s, mode=%s, mem_addr=%0h, mem_data=%0h", 
                                     item.slave_addr, item.status.name(), item.mem_mode.name(), item.mem_addr, item.mem_data), UVM_NONE)
                         disable READ_WRITE_FORK;
                     end
