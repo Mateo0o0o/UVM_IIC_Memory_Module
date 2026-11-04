@@ -21,8 +21,14 @@
                 end
 
                 begin
-                    iic_mem_sequence_simple seq;
-                    seq = iic_mem_sequence_simple::type_id::create("seq");
+                    iic_mem_sequence_overwrite seq;
+                    seq = iic_mem_sequence_overwrite::type_id::create("seq");
+                    seq.start(env.agent.sequencer);
+                end
+
+                begin
+                    iic_mem_sequence_random seq;
+                    seq = iic_mem_sequence_random::type_id::create("seq");
                     seq.start(env.agent.sequencer);
                 end
 

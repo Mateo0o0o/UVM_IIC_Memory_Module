@@ -14,9 +14,6 @@ include/iic_mem_typedefs.sv
 
 test/env/iic_mem_item.sv
 test/env/iic_mem_agent_config.sv
-test/env/iic_mem_sequence_base.sv
-test/env/iic_mem_sequence_simple.sv
-test/env/iic_mem_sequence_wr.sv
 test/env/iic_mem_sequencer.sv
 test/env/iic_mem_driver.sv
 test/env/iic_mem_monitor.sv
@@ -24,6 +21,12 @@ test/env/iic_mem_coverage.sv
 test/env/iic_mem_agent.sv
 test/env/iic_mem_scoreboard.sv
 test/env/iic_mem_env.sv
+
+test/sequences/iic_mem_sequence_base.sv
+test/sequences/iic_mem_sequence_wr.sv
+test/sequences/iic_mem_sequence_overwrite.sv
+test/sequences/iic_mem_sequence_random.sv
+
 test/iic_mem_test_base.sv
 test/iic_mem_test_reg_access.sv
 

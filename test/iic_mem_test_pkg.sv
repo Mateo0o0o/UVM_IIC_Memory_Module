@@ -10,9 +10,6 @@
             `include "include/iic_mem_typedefs.sv"
             `include "test/env/iic_mem_item.sv"
             `include "test/env/iic_mem_agent_config.sv"
-            `include "test/env/iic_mem_sequence_base.sv"
-            `include "test/env/iic_mem_sequence_wr.sv"
-            `include "test/env/iic_mem_sequence_simple.sv"
             `include "test/env/iic_mem_sequencer.sv"
             `include "test/env/iic_mem_driver.sv"
             `include "test/env/iic_mem_monitor.sv"
@@ -20,6 +17,12 @@
             `include "test/env/iic_mem_agent.sv"
             `include "test/env/iic_mem_scoreboard.sv"
             `include "test/env/iic_mem_env.sv"
+
+            `include "test/sequences/iic_mem_sequence_base.sv"
+            `include "test/sequences/iic_mem_sequence_wr.sv"
+            `include "test/sequences/iic_mem_sequence_overwrite.sv"
+            `include "test/sequences/iic_mem_sequence_random.sv"
+
             `include "test/iic_mem_test_base.sv"
             `include "test/iic_mem_test_reg_access.sv"
 

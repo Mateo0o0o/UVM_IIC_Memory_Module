@@ -3,7 +3,9 @@
 
         class iic_mem_sequence_base extends uvm_sequence#(iic_mem_item);
             
-            iic_mem_item item;
+            iic_mem_item    item;
+            mem_addr_t      mem_addr;
+            slave_addr_t    slave_addr = 7'b101_0001;
 
             `uvm_object_utils(iic_mem_sequence_base)
             
