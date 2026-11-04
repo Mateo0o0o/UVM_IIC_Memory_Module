@@ -9,12 +9,24 @@
 
         covergroup iic_mem_transaction;
 
-            coverpoint item.mem_addr {
+            addr_c : coverpoint item.mem_addr {
                 bins low_addr   = {[0               : (2**`AWIDTH/2)-1]};
                 bins high_addr  = {[(2**`AWIDTH/2)  : (2**`AWIDTH)  -1]};
                 bins all0_addr  = {0};
-                bins all1_addr  = {{`AWIDTH{1}}};
+                bins all1_addr  = {{`AWIDTH{1'b1}}};
             }
+
+            data_c : coverpoint item.mem_data {
+                bins low_addr   = {[0               : (2**`AWIDTH/2)-1]};
+                bins high_addr  = {[(2**`AWIDTH/2)  : (2**`AWIDTH)  -1]};
+                bins all0_addr  = {0};
+                bins all1_addr  = {{`AWIDTH{1'b1}}};
+            }
+            mode_c : coverpoint item.mem_mode {
+                bins write      = {MEM_WRITE};
+                bins read       = {MEM_READ};
+            }
+            addr_x_mode : cross addr_c, mode_c;
 
         endgroup
 
