@@ -1,0 +1,22 @@
+
+EACH SLAVE HAS 
+    Address Register 
+        - written after the SlaveAddress, RW transaction
+        - Sets which address of the memory is being written or read
+    Burst Write/Read transaction
+        - the master can burst write/read from the memory starting from the address in the address register 
+
+    Write Operation (No Burst)
+        - Master sends {SlaveAddress, W} ---> Address to be written ---> Data to be written in that address
+    Read Operation (No Burst)
+        - Master sends {SlaveAddress, W} ---> Address to be read ---> Repeated Start ---> Master sends {SlaveAddress, R} ---> Slave Sends the Data found in the specified address in the Addr Register 
+
+
+    To be implemented:
+    Write Operation (With Burst)
+        - Master sends {SlaveAddress, W} ---> Address to be written ---> Data1 to be written in that address ---> Data2 on address + 1 ---> Data3 on address + 2 ---> ...
+    Read Operation (With Burst)
+        - Master sends {SlaveAddress, W} ---> Address to be written ---> {SlaveAddress, R} --->Slave sends Data1 found on address ---> Data2 on address + 1 ---> Data3 on address + 2 ---> ...
+
+
+    

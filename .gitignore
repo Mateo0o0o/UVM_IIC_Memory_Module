@@ -1,0 +1,6 @@
+coverage_html
+obj_dir
+coverage*
+vrun
+*.fst
+*.surf
