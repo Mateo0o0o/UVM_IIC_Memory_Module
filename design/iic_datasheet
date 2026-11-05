@@ -3,8 +3,6 @@ EACH SLAVE HAS
     Address Register 
         - written after the SlaveAddress, RW transaction
         - Sets which address of the memory is being written or read
-    Burst Write/Read transaction
-        - the master can burst write/read from the memory starting from the address in the address register 
 
     Write Operation (No Burst)
         - Master sends {SlaveAddress, W} ---> Address to be written ---> Data to be written in that address
