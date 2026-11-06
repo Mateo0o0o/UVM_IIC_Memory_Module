@@ -1,6 +1,6 @@
 module iic_mem #(
     parameter logic [6:0] SLAVE_ADDR = 7'b101_0001,
-    parameter int MEM_DEPTH = 256
+    parameter int MEM_DEPTH = 2**`AWIDTH
 )(
     input  logic rst_n,
 
