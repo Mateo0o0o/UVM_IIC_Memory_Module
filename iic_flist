@@ -9,8 +9,8 @@ uvm_macros.svh
 
 test/iic_mem_test_pkg.sv
 include/iic_mem_param.sv
-interface/iic_if.sv
 include/iic_mem_typedefs.sv
+interface/iic_if.sv
 
 test/env/iic_mem_item.sv
 test/env/iic_mem_agent_config.sv
