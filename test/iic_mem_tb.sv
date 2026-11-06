@@ -3,7 +3,8 @@ module iic_mem_tb;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
     import iic_mem_test_pkg::*;
-    
+    string wave_name="iic_mem";
+
     // Clock Signal
     bit clk;
 
@@ -29,7 +30,12 @@ module iic_mem_tb;
     end
 
     initial begin
-        $dumpfile("iic_mem.fst");
+
+        if ($value$plusargs("WAVE_NAME=%s", wave_name)) begin end
+        
+        wave_name = $sformatf("%s.fst", wave_name);
+
+        $dumpfile(wave_name);
         $dumpvars;
 
         uvm_config_db#(iic_vif_t)::set(null, "uvm_test_top*", "vif", iic_mem_if);
