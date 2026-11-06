@@ -34,7 +34,11 @@
                     iic_mem_item item;
                     byte data_read;
                     seq_item_port.get_next_item(item);
-                    if (item.mem_mode == MEM_WRITE) begin
+
+                    // Waveform Debugging Purposes
+                    vif.transaction_mem_mode = mem_mode_t'(item.mem_mode);
+                    
+                    if (item.mem_mode == MEM_WRITE) begin    
                         `uvm_info("WRITING SLAVE", $sformatf("Slave Addr=%0h, Mem_Addr=%0h WData=%0h", 
                                    item.slave_addr, item.mem_addr, item.mem_data), UVM_HIGH)
                         drive_slave(vif, item.slave_addr, bit'(MEM_WRITE), item.mem_addr, item.mem_data, data_read);
@@ -44,6 +48,7 @@
                                   item.slave_addr, item.mem_addr), UVM_HIGH)
                         drive_slave(vif, item.slave_addr, bit'(MEM_READ), item.mem_addr, item.mem_data, data_read);
                     end
+
                     seq_item_port.item_done(item);
                 end
 
@@ -66,6 +71,9 @@
                         // Initiate the transaction with the slave
                         choose_slave(vif, slave_addr, bit'(MEM_WRITE), slave_addr_ack);
                         if (slave_addr_ack) begin
+                            // Waveform Debugging Purposes
+                            vif.transaction_mem_addr = mem_addr;
+                            
                             // Write memory_address to the address register of the iic_mem 
                             write_to_slave(vif, slave_addr, mem_addr, mem_addr_ack);
 
@@ -74,12 +82,18 @@
 
                                 // Writes the given data to the specified memory address in the address register
                                 if (!is_read) begin
+                                    // Waveform Debugging Purposes
+                                    vif.transaction_wdata = mem_data;
+
                                     write_to_slave(vif, slave_addr, mem_data,  mem_data_ack);                            
                                 end
 
                                 // Initiates another transcation to read the data contained in the specified memory address
                                 // in the address register
                                 else begin
+                                    // Waveform Debugging Purposes
+                                    vif.transaction_wdata = 0;
+
                                     repeated_start(vif);
                                     choose_slave(vif, slave_addr, bit'(MEM_READ), slave_addr_ack);
                                     if (slave_addr_ack) read_from_slave(vif, mem_data_read);
@@ -104,6 +118,9 @@
                 // Start condition
                 wait (vif.scl == 1);
                 #(`CLK_PERIOD / 4)  write_to_sda(vif, 0);
+
+                // Waveform Debugging Purposes
+                vif.transaction_slave_addr = slave_addr;
 
                 // Sending the Slave Address
                 for (int i = 6; i > -1; i--) begin
