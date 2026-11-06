@@ -12,7 +12,6 @@
             
             function new(string name = "");
                 super.new(name);
-                slave_addr = orig_slave_addr;
             endfunction //new()
 
             
