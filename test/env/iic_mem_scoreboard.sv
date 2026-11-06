@@ -13,8 +13,8 @@
         endfunction //new()
 
         // Reference Model
-        mem_data_t  expected_mem [`AWIDTH-1:0];          // Memory Array with size of mem_data and addresses of 2^AWIDTH
-        bit         written_addr [`AWIDTH-1:0]; 
+        mem_data_t  expected_mem [0 : (2**`AWIDTH)-1];          // Memory Array with size of mem_data and addresses of 2^AWIDTH
+        bit         written_addr [0 : (2**`AWIDTH)-1]; 
 
         virtual function void write(iic_mem_item item);
             if (item.slave_addr == 7'b101_0001) begin
@@ -23,7 +23,7 @@
                     written_addr[item.mem_addr] = 1;
                     `uvm_info(get_type_name(), $sformatf("Writing data: %0x at addr: %0x", item.mem_data, item.mem_addr), UVM_HIGH);
                 end
-                else if (item.mem_mode == MEM_READ) begin
+                else begin
                     if(!written_addr[item.mem_addr]) begin
                         `uvm_info(get_type_name(), $sformatf("addr: %0x read before write, skipping check", item.mem_addr), UVM_LOW);
                     end
