@@ -12,11 +12,10 @@
 
             virtual task body();
                 
-                repeat (`TEST_NUM) begin
+                repeat (iterations) begin
                     item = iic_mem_item::type_id::create("item");
                     item.set_slave_addr(slave_addr);
 
-                    // Writes to a random memory address
                     // Writes to a random memory address
                     start_item(item);
                         if (item.randomize() with {mem_mode == MEM_WRITE;}) begin end

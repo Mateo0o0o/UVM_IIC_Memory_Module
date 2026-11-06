@@ -10,7 +10,7 @@
             endfunction //new()
 
             virtual task body();
-                repeat(`TEST_NUM) begin
+                repeat(iterations) begin
                     item = iic_mem_item::type_id::create("item");
 
                     // Do random read/write on a random memory address

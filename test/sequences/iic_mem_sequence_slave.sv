@@ -11,7 +11,7 @@
             endfunction //new()
 
             virtual task body();
-                repeat(`TEST_NUM) begin
+                repeat(iterations) begin
                     item = iic_mem_item::type_id::create("item");
 
                     // Randomly changes the slave address with 10% chance
@@ -36,7 +36,6 @@
                         if (item.randomize() with {mem_mode == MEM_READ; mem_addr == local::mem_addr;}) begin end
                         item.set_slave_addr(orig_slave_addr);
                     finish_item(item);
-
                 end
             endtask
 
