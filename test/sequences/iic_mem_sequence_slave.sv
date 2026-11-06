@@ -14,8 +14,8 @@
                 repeat(`TEST_NUM) begin
                     item = iic_mem_item::type_id::create("item");
 
-                    // Randomly changes the slave address
-                    if ($urandom_range(5) == 0) begin
+                    // Randomly changes the slave address with 10% chance
+                    if ($urandom_range(10) == 0) begin
                         rand_slave_addr = $urandom_range(7'h08, 7'h77);
                     end
                     else begin
