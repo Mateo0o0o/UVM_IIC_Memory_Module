@@ -9,7 +9,7 @@
             rand mem_data_t     mem_data;
             rand mem_addr_t     mem_addr;
             rand mem_mode_t     mem_mode;
-                 slave_addr_t   slave_addr = 7'b101_0001;
+                 slave_addr_t   slave_addr;
 
             uvm_status_e        status = UVM_NOT_OK;
 
