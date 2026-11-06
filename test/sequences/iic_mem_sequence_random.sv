@@ -12,10 +12,12 @@
             virtual task body();
                 repeat(`TEST_NUM) begin
                     item = iic_mem_item::type_id::create("item");
-                    item.set_slave_addr(slave_addr);
 
                     // Do random read/write on a random memory address
-                    `uvm_do(item);
+                    start_item(item);
+                        void'(item.randomize());
+                        item.set_slave_addr(orig_slave_addr);
+                    finish_item(item);                
                 end
             endtask
 

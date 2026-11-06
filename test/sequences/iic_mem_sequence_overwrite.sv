@@ -17,29 +17,29 @@
                     item.set_slave_addr(slave_addr);
 
                     // Writes to a random memory address
-                    `uvm_do_with(
-                        item,
-                        {item.mem_mode == MEM_WRITE;}
-                    )
+                    // Writes to a random memory address
+                    start_item(item);
+                        if (item.randomize() with {mem_mode == MEM_WRITE;}) begin end
+                        item.set_slave_addr(orig_slave_addr);
+                    finish_item(item);
+
                     // Saves the current memory address
                     this.mem_addr = item.mem_addr;
 
                     // Overwrites the saved memory address
                     number_of_overwrites = $urandom_range(5);
                     repeat (number_of_overwrites) begin
-                        `uvm_do_with(
-                            item,
-                            {item.mem_mode == MEM_WRITE;
-                            item.mem_addr == local::mem_addr;}
-                        )
+                        start_item(item);
+                            if (item.randomize() with {mem_mode == MEM_WRITE; item.mem_addr == local::mem_addr;}) begin end
+                            item.set_slave_addr(orig_slave_addr);
+                        finish_item(item);
                     end
 
                     // Reads the updated content of the memory address
-                    `uvm_do_with(
-                        item,
-                        {item.mem_mode == MEM_READ;
-                        item.mem_addr == local::mem_addr;}
-                    )
+                    start_item(item);
+                        if (item.randomize() with {mem_mode == MEM_READ; mem_addr == local::mem_addr;}) begin end
+                        item.set_slave_addr(orig_slave_addr);
+                    finish_item(item);
                 end
 
             endtask
