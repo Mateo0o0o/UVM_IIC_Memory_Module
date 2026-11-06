@@ -29,8 +29,12 @@ test/sequences/iic_mem_sequence_random.sv
 test/sequences/iic_mem_sequence_slave.sv
 
 test/iic_mem_test_base.sv
-test/iic_mem_test_reg_access.sv
-test/iic_mem_test_random_slave.sv
+test/iic_mem_test_overwrite.sv
+test/iic_mem_test_random.sv
+test/iic_mem_test_slave.sv
+test/iic_mem_test_wr.sv
+test/iic_mem_test_all_seq.sv
+test/iic_mem_test_all_random_seq.sv
 
 test/ral/iic_mem_addr_reg.sv
 test/ral/iic_mem_mem.sv

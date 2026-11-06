@@ -25,8 +25,12 @@
             `include "test/sequences/iic_mem_sequence_slave.sv"
 
             `include "test/iic_mem_test_base.sv"
-            `include "test/iic_mem_test_reg_access.sv"
-            `include "test/iic_mem_test_random_slave.sv"
+            `include "test/iic_mem_test_overwrite.sv"
+            `include "test/iic_mem_test_random.sv"
+            `include "test/iic_mem_test_slave.sv"
+            `include "test/iic_mem_test_wr.sv"
+            `include "test/iic_mem_test_all_seq.sv"
+            `include "test/iic_mem_test_all_random_seq.sv"
 
             `include "test/ral/iic_mem_addr_reg.sv"
             `include "test/ral/iic_mem_mem.sv"
