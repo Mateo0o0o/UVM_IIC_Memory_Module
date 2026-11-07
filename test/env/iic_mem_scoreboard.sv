@@ -25,7 +25,7 @@
                 end
                 else begin
                     if(!written_addr[item.mem_addr]) begin
-                        `uvm_info(get_type_name(), $sformatf("addr: %0x read before write, skipping check", item.mem_addr), UVM_LOW);
+                        `uvm_info(get_type_name(), $sformatf("addr: %0x read before write, skipping check", item.mem_addr), UVM_MEDIUM);
                     end
                     else if (item.mem_data != expected_mem[item.mem_addr]) begin
                         `uvm_error(get_type_name(), $sformatf("Mismatch at addr %0x : Expected= %0x, Actual= %0x", 
@@ -37,7 +37,7 @@
                 end
             end
             else begin
-                `uvm_info("NO SLAVE", "No slave responded", UVM_LOW)
+                // `uvm_info("NO SLAVE", "No slave responded", UVM_MEDIUM)
             end
             
         endfunction
