@@ -4,10 +4,11 @@
         package iic_mem_test_pkg;
 
             import uvm_pkg::*;
+            import iic_mem_types_pkg::*;
+
             `include "uvm_macros.svh"
 
             `include "include/iic_mem_param.sv"
-            `include "include/iic_mem_typedefs.sv"
             `include "test/env/iic_mem_item.sv"
             `include "test/env/iic_mem_agent_config.sv"
             `include "test/env/iic_mem_sequencer.sv"
@@ -40,6 +41,7 @@
             `include "test/ral/iic_mem_my_env.sv"
             `include "test/ral/iic_mem_reg_sequence.sv"
             `include "test/iic_mem_reg_test.sv"
+
 
         endpackage
 

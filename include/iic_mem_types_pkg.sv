@@ -1,3 +1,4 @@
+package iic_mem_types_pkg;
     
     // Virtual Interface
     typedef virtual iic_if iic_vif_t;
@@ -27,3 +28,5 @@
         GET_DATA = 6,
         DATA_ACK = 7
     } iic_state_t;
+
+endpackage

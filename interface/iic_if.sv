@@ -1,5 +1,7 @@
 interface iic_if (input logic clk);
     
+    import iic_mem_types_pkg::*;
+
     logic   rst_n;
     wire    sda;
     wire    scl;

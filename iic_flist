@@ -7,9 +7,9 @@ config.vlt
 uvm_pkg.sv
 uvm_macros.svh
 
-test/iic_mem_test_pkg.sv
 include/iic_mem_param.sv
-include/iic_mem_typedefs.sv
+include/iic_mem_types_pkg.sv
+test/iic_mem_test_pkg.sv
 interface/iic_if.sv
 
 test/env/iic_mem_item.sv

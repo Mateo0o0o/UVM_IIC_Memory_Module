@@ -2,6 +2,7 @@ module iic_mem_tb;
     
     import uvm_pkg::*;
     `include "uvm_macros.svh"
+    import iic_mem_types_pkg::*;
     import iic_mem_test_pkg::*;
     string wave_name="iic_mem";
 
