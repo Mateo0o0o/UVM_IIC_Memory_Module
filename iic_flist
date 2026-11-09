@@ -1,5 +1,4 @@
 +define+UVM_NO_DPI
---trace-fst
 --timescale 1ns/100ps
 
 config.vlt

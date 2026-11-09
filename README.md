@@ -32,14 +32,14 @@ Because Verilator only understands 0 and 1 (not tri-state high-impedance Z), I s
 
 ## How to Run
 1. Make sure you use Verilator v5.052 or above. See  [Verilator](https://verilator.org/guide/latest/install.html) for more information.
-2. Give access to the vrun bash script using:
-```chmod +x vrun```
+2. Give access to the vrun.py script using:
+```chmod +x vrun.py```
 3. Run the vrun script:
 
     *To run a single test*
 
-    ```./vrun --test iic_mem_test_wr --coverage --wave```
+    ```./vrun.py test=iic_mem_test_wr coverage=1 wave```
 
     *To run all test simultaneously*
     
-    ```./vrun --run-all --coverage --wave``` 
+    ```./vrun.py run_all coverage=1 wave```

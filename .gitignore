@@ -4,3 +4,4 @@ coverage*
 *.fst
 *.surf*
 *.log
+__pycache__
