@@ -27,7 +27,7 @@ verbosity       = "UVM_MEDIUM"
 rand_seed       = 0
 jobs            = 12
 threads         = 2
-test_run        = 1
+test_runs        = 1
 
 # Environment
 env = os.environ.copy()
@@ -84,8 +84,8 @@ for argument in sys.argv:
     elif 'threads=' in argument:
         threads = vmod.is_in_range('threads', int(argument.split('=')[1].strip()), default_value=threads, min=1)
 
-    elif 'test_run=' in argument:
-        test_run = vmod.is_in_range('test_run', int(argument.split('=')[1].strip()), default_value=test_run, min=1)
+    elif 'test_runs=' in argument:
+        test_runs = vmod.is_in_range('test_runs', int(argument.split('=')[1].strip()), default_value=test_runs, min=1)
 
     else:
         print(f"{argument} is an invalid argument. Refer below for more info.")
@@ -113,7 +113,7 @@ if run_all:
     if __name__ == '__main__':
 
         # Arguments for Run Test
-        for each_run in range(test_run):
+        for each_run in range(test_runs):
             for each_test in test_tuple:
                 run_test_args.append(
                     (obj_dir, top_tb, each_test, wave, open_wave, seed, 
@@ -122,7 +122,7 @@ if run_all:
                 )
             # If test runs are > 1 but rand_seed is disabled ...
             # Then seeds are incremented in each test run to avoid redundancy
-            if test_run > 1 and rand_seed == 0:
+            if test_runs > 1 and rand_seed == 0:
                 seed+=1
 
         with Pool(processes=pool_processes) as pool:
@@ -131,14 +131,14 @@ if run_all:
         print(f"{vmod.CGREEN}[ALL TEST DONE] All tests are done!{vmod.CRESET}")
 
 else:
-    for each_run in range(test_run):
+    for each_run in range(test_runs):
         vmod.run_test(obj_dir, top_tb, test, wave, open_wave, seed, 
                       verbosity, coverage != 0, open_coverage, 
                       coverage_files_folder, logs_folder)
         
         # If test runs are > 1 but rand_seed is disabled ...
         # Then seeds are incremented in each test run to avoid redundancy
-        if test_run > 1 and rand_seed == 0:
+        if test_runs > 1 and rand_seed == 0:
             seed+=1
     
     print(f"{vmod.CGREEN}[ALL TEST DONE] All tests are done!{vmod.CRESET}")
