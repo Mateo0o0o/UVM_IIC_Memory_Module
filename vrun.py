@@ -105,7 +105,6 @@ verilator_args   = f"-Wno-fatal --binary -j {jobs} --threads {threads} \
 vmod.build_test(env, verilator_args)
 
 # Run the test
-seed            = vmod.generate_random_seed() if rand_seed else 1
 pool_processes  = jobs // threads 
 run_test_args   = []
 
@@ -114,6 +113,7 @@ if run_all:
 
         # Arguments for Run Test
         for each_run in range(test_runs):
+            seed = vmod.generate_random_seed() if rand_seed else 1
             for each_test in test_tuple:
                 run_test_args.append(
                     (obj_dir, top_tb, each_test, wave, open_wave, seed, 
@@ -132,6 +132,7 @@ if run_all:
 
 else:
     for each_run in range(test_runs):
+        seed = vmod.generate_random_seed() if rand_seed else 1
         vmod.run_test(obj_dir, top_tb, test, wave, open_wave, seed, 
                       verbosity, coverage != 0, open_coverage, 
                       coverage_files_folder, logs_folder)
