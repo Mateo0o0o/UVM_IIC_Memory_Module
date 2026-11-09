@@ -21,13 +21,14 @@ def print_help(test_tuple, coverage_tuple, verbosity_tuple):
     print("""\nVRUN ARGUMENTS                                                                                   
         test=<Test Name>            Specifies which test to run                                       
         run_all                     Run all tests simultaneously                                      
+        test_runs=<Number>          Specifies how many times will the test be run                                      
+        stimulus=<Number>           Specifies sequence/item/test stimulus count per test            
+        rand-seed                   Enables randomization of seed value                               
         coverage=<Level>            Specifies coverage level (default to No Coverage)                      
         open_coverage               Opens the coverage results after the simulation                           
-        stimulus=<Number>           Specifies sequence/item/test stimulus count per test            
         wave                        Enables waveform generation                                       
         open_wave                   Opens the waveform after the simulation                           
         verbosity=<Level>           Specifies UVM Verbosity Level                                     
-        rand-seed                   Enables randomization of seed value                               
         jobs=<Jobs Count>           Specifies the number of threads used for for all verilator simulation
         threads=<Threads Count>     Specifies the number of threads used for each verilator simulation""")
 
