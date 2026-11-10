@@ -120,12 +120,15 @@ def run_test(obj_dir:str, top_tb:str, test_name:str, has_wave : bool,
         coverage_dir = Path(f"{coverage_files_folder}/{test_name}")
         coverage_dir.mkdir(exist_ok=True, parents=True)
         coverage_file = f"{str(coverage_dir)}/seed_{seed}_{test_name}"
-    
+        coverage_file_flag = f"+verilator+coverage+file+{coverage_file}.dat"
+    else:
+        coverage_file_flag = ""
+
     try:
         # Run the test
         result = subprocess.Popen(f"{obj_dir}{top_tb} +UVM_TESTNAME={test_name} {wave_flag} \
                     +verilator+seed+{seed} +UVM_VERBOSITY={verbosity} +UVM_NO_RELNOTES \
-                    +verilator+coverage+file+{coverage_file}.dat",
+                    {coverage_file_flag}",
                     shell=True, text=True, stdout=subprocess.PIPE, 
                     stderr=subprocess.STDOUT, bufsize=1)
         
