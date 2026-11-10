@@ -107,13 +107,14 @@ vmod.build_test(env, verilator_args)
 # Run the test
 pool_processes  = jobs // threads 
 run_test_args   = []
+seed            = 1
 
 if run_all:
     if __name__ == '__main__':
 
         # Arguments for Run Test
         for each_run in range(test_runs):
-            seed = vmod.generate_random_seed() if rand_seed else 1
+            seed = vmod.generate_random_seed() if rand_seed else seed
             for each_test in test_tuple:
                 run_test_args.append(
                     (obj_dir, top_tb, each_test, wave, open_wave, seed, 
@@ -132,7 +133,7 @@ if run_all:
 
 else:
     for each_run in range(test_runs):
-        seed = vmod.generate_random_seed() if rand_seed else 1
+        seed = vmod.generate_random_seed() if rand_seed else seed
         vmod.run_test(obj_dir, top_tb, test, wave, open_wave, seed, 
                       verbosity, coverage != 0, open_coverage, 
                       coverage_files_folder, logs_folder)
